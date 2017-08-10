@@ -8,6 +8,8 @@
         <meta http-equiv="Cache-Control" content="no-siteapp">
         <title>UIC Head-photo Synthesizer</title>
         <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+        <script src="https://use.fontawesome.com/0aa367b986.js"></script>
+        <link rel="stylesheet" href="font-awesome.min.css">
         <style>
             .row{
                 margin: 1.5rem 0;
@@ -48,13 +50,13 @@
                 <input type="file" accept="image/*" id="yuchao">
             </div>
         </div>
-        <div class="row justify-content-md-center" style="display: none;">
+        <div class="row justify-content-md-center" style="display: none">
             <select name="type" id="type" class="custom-select">
                 <option name="styles" value=1 selected>尖角</option>
                 <option name="styles" value=2>圆角</option>
             </select>
-        </DIV>
-        <div class="row justify-content-md-center">
+        </div>
+        <div class="row justify-content-md-center" style="justify-content: center">
             <div class="btn-group btn-group-lg" role="typeStyle">
                 <button type="button" class="btn btn-success active" id="styleOne" onclick="styleSwitch(id)">尖角</button>
                 <button type="button" class="btn btn-secondary" id="styleTwo" onclick="styleSwitch(id)">圆角</button>
@@ -64,8 +66,11 @@
             <p class="help">推荐选择<b>正方形</b>照片，生成头像后可长按并保存。</p>
         </div>
 		<div align="center" id="foot">
-			<p id="footer"><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NDEzMjg3MA==&scene=110#wechat_redirect">关注</a> UICHCC</p>
+			<p id="footer"><i class="fa fa-weixin"></i><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NDEzMjg3MA==&scene=110#wechat_redirect">UICHCC</a> </p>
 		</div>
+        <div style="text-align: center">
+            <p><a href="http://www.miitbeian.gov.cn/">粤ICP备15011948号-2</a></p>
+        </div>
 		<div align="center" class="img_photo" style="display: none;">
 		    <img src="UICLogo.png" width="879" height="879">
 		    <img src="UICLogo2.png" width="879" height="879">

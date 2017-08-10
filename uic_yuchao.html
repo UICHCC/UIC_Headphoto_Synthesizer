@@ -36,13 +36,12 @@
                 z-index: 2;
             }
         </style>
-	</head>
-	
-	<body>
+    </head>
+<body>
     <div class="container">
         <div class="row justify-content-md-center">
-                <img src="uichcc.jpg" id="sampleImg" style="width: 100%; height: 100%">
-                <img id="imgBox" style="width: 100%; height: 100%">
+            <img src="uichcc.jpg" id="sampleImg" style="width: 100%; height: 100%">
+            <img id="imgBox" style="width: 100%; height: 100%">
         </div>
         <div class="row justify-content-md-center">
             <div class="btn btn-primary btn-lg btn-block uploadBtn">Click to Upload
@@ -50,79 +49,75 @@
             </div>
         </div>
         <div class="row justify-content-md-center">
-                <select name="type" id="type" class="custom-select">
-                    <option value=1 selected>尖角</option>
-                    <option value=2>圆角</option>
-                </select>
+            <select name="type" id="type" class="custom-select">
+                <option value=1 selected>尖角</option>
+                <option value=2>圆角</option>
+            </select>
         </div>
         <div class="row justify-content-md-center">
-                <p class="help">推荐选择<b>正方形</b>照片，生成头像后可长按并保存。</p>
+            <p class="help">推荐选择<b>正方形</b>照片，生成头像后可长按并保存。</p>
         </div>
 		<div align="center" id="foot">
 			<p id="footer"><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4NDEzMjg3MA==&scene=110#wechat_redirect">关注</a> UICHCC</p>
 		</div>
-
 		<div align="center" class="img_photo" style="display: none;">
 		    <img src="UICLogo.png" width="879" height="879">
 		    <img src="UICLogo2.png" width="879" height="879">
 		</div>
     </div>
-		<!--JavaScript Below-->
-        <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js" charset="utf-8"></script>
-		<script>
-			var wid = 879;
-		    var c = document.createElement('canvas');
-		    var ctx = c.getContext('2d');
-		    c.width = wid;
-		    c.height = wid;
-		    
-			ctx.fillStyle = 'white'; 
-		    ctx.rect(0, 0, wid, wid);
+    <!--JavaScript Below-->
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js" charset="utf-8"></script>
+    <script>
+        var wid = 879;
+        var c = document.createElement('canvas');
+        var ctx = c.getContext('2d');
+        c.width = wid;
+        c.height = wid;
 
-		    var data1 = new Array();
-		    for(var i = 0; i < $('.img_photo img').length; i++) {
-		        data1[i]=$('.img_photo img').eq(i).attr('src');
-		    } 
-			var typeSel = document.getElementById("type");
-			var type = 0;
-			var imgSrc = "";
+        ctx.fillStyle = 'white';
+        ctx.rect(0, 0, wid, wid);
 
-			typeSel.onchange = function() {
-				type = parseInt(typeSel.options[typeSel.selectedIndex].value) - 1;
-				if (imgSrc.length > 0) {
-					ctx.fill();
-					var img = new Image(); 
-					img.src = imgSrc;
-					ctx.drawImage(img, 78, 120, wid - 200, wid - 190);
-					var img2 = new Image(); 
-					img2.src = data1[type];
-					ctx.drawImage(img2, 0, 0, wid, wid);
-					
-					$('#imgBox').attr('src', c.toDataURL("image/jpeg"));
-				}
-			};
-			$("#yuchao").change(function() {
-			    ctx.fill();
-				var file = new FileReader(); 
-				var furl = $('#yuchao')[0].files[0];
-				file.readAsDataURL(furl);
-				file.onload = function(e){
-					var img = new Image(); 
-					img.src = e.target.result;
-					imgSrc = img.src;
-                    var obj = document.getElementById("sampleImg");
-                    obj.style.display= "none";
-					img.onload = function () {
-						ctx.drawImage(this, 78, 120, wid - 200, wid - 190);
-			            var img = new Image();
-			            img.src = data1[type];
-						ctx.drawImage(img, 0, 0, wid, wid);
-						$('#imgBox').attr('src', c.toDataURL("image/jpeg"));
-					}
-				};
-			});
-		</script>
-	
-	</body>
+        var data1 = new Array();
+        for(var i = 0; i < $('.img_photo img').length; i++) {
+            data1[i]=$('.img_photo img').eq(i).attr('src');
+        }
+        var typeSel = document.getElementById("type");
+        var type = 0;
+        var imgSrc = "";
 
+        typeSel.onchange = function() {
+            type = parseInt(typeSel.options[typeSel.selectedIndex].value) - 1;
+            if (imgSrc.length > 0) {
+                ctx.fill();
+                var img = new Image();
+                img.src = imgSrc;
+                ctx.drawImage(img, 78, 120, wid - 200, wid - 190);
+                var img2 = new Image();
+                img2.src = data1[type];
+                ctx.drawImage(img2, 0, 0, wid, wid);
+                $('#imgBox').attr('src', c.toDataURL("image/jpeg"));
+            }
+        };
+        $("#yuchao").change(function() {
+            ctx.fill();
+            var file = new FileReader();
+            var furl = $('#yuchao')[0].files[0];
+            file.readAsDataURL(furl);
+            file.onload = function(e){
+                var img = new Image();
+                img.src = e.target.result;
+                imgSrc = img.src;
+                var obj = document.getElementById("sampleImg");
+                obj.style.display= "none";
+                img.onload = function () {
+                    ctx.drawImage(this, 78, 120, wid - 200, wid - 190);
+                    var img = new Image();
+                    img.src = data1[type];
+                    ctx.drawImage(img, 0, 0, wid, wid);
+                    $('#imgBox').attr('src', c.toDataURL("image/jpeg"));
+                }
+            };
+        });
+    </script>
+</body>
 </html>

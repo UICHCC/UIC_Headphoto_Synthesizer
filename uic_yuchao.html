@@ -48,11 +48,17 @@
                 <input type="file" accept="image/*" id="yuchao" value="https://i.loli.net/2017/08/10/598bc7cd9acc0.jpg">
             </div>
         </div>
-        <div class="row justify-content-md-center">
+        <div class="row justify-content-md-center" style="display: none;">
             <select name="type" id="type" class="custom-select">
-                <option value=1 selected>尖角</option>
-                <option value=2>圆角</option>
+                <option name="styles" value=1 selected>尖角</option>
+                <option name="styles" value=2>圆角</option>
             </select>
+        </DIV>
+        <div class="row justify-content-md-center">
+            <div class="btn-group btn-group-lg" role="typeStyle">
+                <button type="button" class="btn btn-success active" id="styleOne" onclick="styleSwitch(id)">尖角</button>
+                <button type="button" class="btn btn-secondary" id="styleTwo" onclick="styleSwitch(id)">圆角</button>
+            </div>
         </div>
         <div class="row justify-content-md-center">
             <p class="help">推荐选择<b>正方形</b>照片，生成头像后可长按并保存。</p>
@@ -118,6 +124,33 @@
                 }
             };
         });
+        function styleSwitch(btn) {
+            var btnOne = document.getElementById('styleOne');
+            var btnTwo = document.getElementById('styleTwo');
+            var selectionGroup = document.getElementsByName('styles');
+            if (btn === "styleOne"){
+                btnOne.setAttribute("class", "btn btn-success active");
+                btnTwo.setAttribute("class", "btn btn-secondary");
+                selectionGroup[0].selected = true;
+                selectionGroup[1].selected = false;
+            }else if (btn === "styleTwo"){
+                btnTwo.setAttribute("class", "btn btn-success active");
+                btnOne.setAttribute("class", "btn btn-secondary");
+                selectionGroup[0].selected = false;
+                selectionGroup[1].selected = true;
+            }
+                type = parseInt(typeSel.options[typeSel.selectedIndex].value) - 1;
+                if (imgSrc.length > 0) {
+                    ctx.fill();
+                    var img = new Image();
+                    img.src = imgSrc;
+                    ctx.drawImage(img, 78, 120, wid - 200, wid - 190);
+                    var img2 = new Image();
+                    img2.src = data1[type];
+                    ctx.drawImage(img2, 0, 0, wid, wid);
+                    $('#imgBox').attr('src', c.toDataURL("image/jpeg"));
+                }
+            }
     </script>
 </body>
 </html>

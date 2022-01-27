@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Cache-Control" content="no-siteapp">
         <title>UIC Head-photo Synthesizer</title>
-        <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://use.fontawesome.com/0aa367b986.js"></script>
-        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <style>
             .row{
                 margin: 1.5rem 0;
@@ -77,7 +77,7 @@
 		</div>
     </div>
     <!--JavaScript Below-->
-    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" charset="utf-8"></script>
     <script>
         var wid = 879;
         var c = document.createElement('canvas');
@@ -109,7 +109,7 @@
                 $('#imgBox').attr('src', c.toDataURL("image/jpeg"));
             }
         };
-        $("#yuchao").change(function() {
+        $("#yuchao").on('change', function() {
             ctx.fill();
             var file = new FileReader();
             var furl = $('#yuchao')[0].files[0];
